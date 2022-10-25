@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Alpine js</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+
+        <style>
+            .active{
+                color: blue;
+            }
+        </style>
+        
+    </head>
+
+    <body>
+
+        <!-- <div x-data="{show: false}"> 
+            <h1 x-show="show">Hello World</h1>
+
+            <button x-on:click="show = !show" x-text="show ? 'Hide' : 'Show'"></button>
+        </div> -->
+
+        <div x-data="{currentTab: 'first'}"> 
+            <button @click="currentTab = 'first'" :class = "{'active' : currentTab === 'first'}">First</button>
+            <button @click="currentTab = 'second'" :class = "{'active' : currentTab === 'second'}">Second</button>
+            <button @click="currentTab = 'third'" x-bind:class = "{'active' : currentTab === 'third'}">Third</button>
+
+            <div style="border: 1px dotted grey; padding: 1rem;">
+                <div x-show="currentTab === 'first'"><p>First tab</p></div>
+                <div x-show="currentTab === 'second'"><p>Second tab</p></div>
+                <div x-show="currentTab === 'third'"><p>Third tab</p></div>
+            </div>
+        </div>
+
+    </body>
+
+</html>
