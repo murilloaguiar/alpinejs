@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Alpine js</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+        
+    </head>
+
+    <body>
+        <!-- <div x-data="{message: 'Hello World'}">
+            <h1 x-text="message"></h1>
+
+            <input type="text" :value="message">
+            <input type="text" x-bind:value="message"> 
+
+
+            <input type="text" x-model="message">
+        </div> -->
+
+        <div x-data="{first: 0, second:0 }">
+            <input type="text" x-model.number="first"> + <input type="text" x-model.number="second"> = <output x-text="first+second"></output>
+        </div>
+    </body>
+</html>
