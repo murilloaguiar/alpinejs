@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Alpine js</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
+    </head>
+    <body class="p-10 max-w-lg mx-auto">
+
+        <form 
+            x-data="{
+                form: {
+                    name: ''   
+                },
+
+                user: null,
+
+                submit(){
+                    fetch('https://reqres.in/api/users', { 
+                        method: 'post',
+                        headers: { 'Content-Type': 'aplication-json'},
+                        body: JSON.stringify(this.form)
+                    })
+                    .then(response => response.json())
+                    .then(data=>this.user = data)
+                }
+            }"
+            @submit.prevent="submit"
+        >
+            <div class="mb-6">
+                <label for="name" 
+                    class="block mb-2 uppercase font-bold text-xs text-gray-700">Name
+                </label>
+
+                <input type="text" 
+                    class="border border-gray-400 p-2 w-full" 
+                    x-model="form.name"
+                    name="name" 
+                    id="name"
+                    required>
+
+                <p x-text="form.name"></p>
+            </div>
+
+            <template x-if="user">
+                <div x-text="'The user '+ user.name+' was created at '+ user.createdAt">
+                    
+                </div>
+            </template>
+
+        </form>
+
+    </body>
+
+</html>
