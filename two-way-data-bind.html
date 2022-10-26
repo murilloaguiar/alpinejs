@@ -28,7 +28,7 @@
                 submit(){
                     fetch('https://reqres.in/api/users', { 
                         method: 'post',
-                        headers: { 'Content-Type': 'aplication-json'},
+                        headers: { 'Content-Type': 'application/json'},
                         body: JSON.stringify(this.form)
                     })
                     .then(response => response.json())
