@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Alpine js</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="" />
+
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+        />
+    </head>
+
+    <body class="grid items-center justify-center h-screen">
+        <div x-data="{show: false}" @click.away="show = false">
+            <button @click="show = !show">Links</button>
+            <div
+                class="absolute bg-black text-white py-2 rounded mt-1"
+                x-show="show"
+                x-transition:enter="transition transform duration-200 ease-out"
+                x-transition:enter-start="scale-75"
+                
+                x-transition:leave="transition transform duration-100 ease-in"
+                x-transition:leave-end="opacity-0 scale-90"
+            >
+                <a class="block hover:bg-gray-800 px-4 text-xs py-px" href=""
+                    >Edit</a
+                >
+                <a class="block hover:bg-gray-800 px-4 text-xs py-px" href=""
+                    >Delete</a
+                >
+                <a class="block hover:bg-gray-800 px-4 text-xs py-px" href=""
+                    >Report Spam</a
+                >
+            </div>
+        </div>
+    </body>
+</html>
