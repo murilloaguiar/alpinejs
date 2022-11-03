@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Alpine js</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="" />
+
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+        />
+    </head>
+
+    <body class="p-12">
+
+        <div x-data>
+            <button x-on:click="$dispatch('flash', {message: 'Hello World!'})">Trigger Flash Message</button>
+        </div>
+        <!-- <div x-data>
+            <button x-on:click="flash('Hello World!')">Trigger Flash Message</button>
+        </div> -->
+
+        <hr>
+
+        <div 
+            x-data = "{show: false, message: ''}"
+            x-show.transition.opacity.scale.75="show"
+
+            @flash.window="
+                show = true; 
+                message = $event.detail.message
+
+                setTimeout(()=>{
+                    show = false
+                },3000)
+            "
+
+            class="fixed bottom-0 right-0 mb-4 mr-4 bg-blue-500 text-white p-4 rounded"
+            x-text="message"
+        >
+
+        </div>
+
+        <script>
+            window.flash = (message) =>
+                window.dispatchEvent(
+                    new CustomEvent("flash", { detail: message })
+                );
+        </script>
+    </body>
+</html>
